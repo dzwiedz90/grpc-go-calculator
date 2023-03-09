@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "github.com/dzwiedz90/grpc-go-calculator";
+
+enum MathOperation {
+    MATH_OPERATION_ADDITION = 0;
+    MATH_OPERATION_SUBSTRACTION =1;
+    MATH_OPERATION_MULTIPLICATION = 2;
+    MATH_OPERATION_DIVISION = 3;
+}
+
+message CalculatorRequest {
+    double first_number = 1;
+    double second_number = 2;
+    MathOperation math_operation = 3; 
+}
+
+message CalculatorResponse {
+    double result = 1;
+}
+
+service CalculatorService {
+    rpc Calculate (CalculatorRequest) returns (CalculatorResponse);
+}
