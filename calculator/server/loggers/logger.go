@@ -17,6 +17,7 @@ func LogRequest(ctx context.Context, r *pb.CalculatorRequest) {
 	}
 
 	log.Println(md)
+	fmt.Printf("\tAuthorization: %s, method: %s\n", md.Get("authorization"), md.Get("method"))
 
 	fmt.Printf("\tRequest with input data: FirstNumber: %f, SecondNumber: %f, MathOperation: %d\n", r.FirstNumber, r.SecondNumber, pb.MathOperation(r.MathOperation))
 }
