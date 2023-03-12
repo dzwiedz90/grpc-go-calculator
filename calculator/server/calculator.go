@@ -2,13 +2,15 @@ package main
 
 import (
 	"context"
-	"log"
+	"fmt"
 
 	pb "github.com/dzwiedz90/grpc-go-calculator/calculator/proto"
+	logggers "github.com/dzwiedz90/grpc-go-calculator/calculator/server/loggers"
 )
 
 func (s *Server) Calculate(ctx context.Context, in *pb.CalculatorRequest) (*pb.CalculatorResponse, error) {
-	log.Printf("Calculator function was invoked with %v\n", in)
+	logggers.LogRequest(ctx, in)
+	fmt.Printf("\tCalculator function was invoked with %v\n", in)
 
 	result := 0.0
 
